@@ -43,7 +43,8 @@ def main():
     psnrs, ssims, lpipss = [], [], []
     for k in tqdm(range(num_images)):
         img_gt_int = imread(os.path.join(gt_dir, f'{k:03}.png'))
-        img_pr_int = imread(os.path.join(pr_dir, f'{k:03}.png'))
+        img_pr_int = imread(os.path.join(pr_dir, f'input-{k}.png'))
+        #img_pr_int = imread(os.path.join(pr_dir, f'{k:03}.png'))
 
         img_gt = color_map_forward(img_gt_int)
         img_pr = color_map_forward(img_pr_int)
@@ -63,7 +64,8 @@ def main():
 
     msg=f'{args.name}\t{np.mean(psnrs):.5f}\t{np.mean(ssims):.5f}\t{np.mean(lpipss):.5f}'
     print(msg)
-    with open('/cfs-cq-dcc/rondyliu/nvs.log','a') as f:
+    # 경로 '/cfs-cq-dcc/rondyliu/nvs.log' 에서 'nvs.log'로 변경
+    with open('nvs.log','a') as f:
         f.write(msg+'\n')
 
 

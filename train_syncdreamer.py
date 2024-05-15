@@ -259,10 +259,10 @@ if __name__ == "__main__":
     ###################callbacks#####################
     # default ckpt callbacks
     default_modelckpt_cfg = {"target": "pytorch_lightning.callbacks.ModelCheckpoint",
-                             "params": {"dirpath": ckptdir, "filename": "{epoch:06}", "verbose": True, "save_last": True, "every_n_train_steps": 5000}}
+                             "params": {"dirpath": ckptdir, "filename": "{epoch:06}", "verbose": True, "save_last": True, "every_n_train_steps": 20000}}
     modelckpt_cfg = OmegaConf.merge(default_modelckpt_cfg, get_optional_dict("modelcheckpoint", lightning_config))  # overwrite checkpoint configs
     default_modelckpt_cfg_repeat = {"target": "pytorch_lightning.callbacks.ModelCheckpoint",
-                                    "params": {"dirpath": ckptdir, "filename": "{step:08}", "verbose": True, "save_last": False, "every_n_train_steps": 5000, "save_top_k": -1}}
+                                    "params": {"dirpath": ckptdir, "filename": "{step:08}", "verbose": True, "save_last": False, "every_n_train_steps": 20000, "save_top_k": -1}}
     modelckpt_cfg_repeat = OmegaConf.merge(default_modelckpt_cfg_repeat)
 
     # add callback which sets up log directory

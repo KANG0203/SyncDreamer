@@ -63,7 +63,10 @@ def main():
 
     for bi in range(B):
         output_fn = Path(flags.output)/ f'{bi}.png'
+        # 16 view 저장
         imsave(output_fn, np.concatenate([x_sample[bi,ni] for ni in range(N)], 1))
+        # 8 view 저장
+        #imsave(output_fn, np.concatenate([x_sample[bi, ni] for ni in range(N) if ni % 2 == 0], 1))
 
 if __name__=="__main__":
     main()
